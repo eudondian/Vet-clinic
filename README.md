@@ -26,7 +26,7 @@
 
 > Vet Clinic Database project ia about creation and manipulation of a veternary Clinic database.
 
-**[your_project__name]** is a...
+
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -50,7 +50,7 @@
 
 
 
-- [Live Demo Link](<replace-with-your-deployment-URL>)
+- [Live Demo Link]()
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -136,10 +136,10 @@ Example:
 
 ## 👥 Authors <a name="authors"></a>
 
-👤 **Author1**
+👤 **Author**
 
 - GitHub: [https://github.com/eudondian]
-- Twitter: https://twitter.com/EUdondian]
+- Twitter: [https://twitter.com/EUdondian]
 - LinkedIn: [https://www.linkedin.com/in/esther-udondian/]
 
 👤 
@@ -151,7 +151,7 @@ Example:
 
 
 
-- [ ] **Multiple tables**
+- [ ] **Multiple tables*
 - [ ] **More complex queries**
 
 
@@ -163,15 +163,13 @@ Example:
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/eudondian/Vet-clinic/issues]).
+Feel free to check the [issues page](https://github.com/eudondian/Vet-clinic/issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- SUPPORT -->
 
 ## ⭐️ Show your support <a name="support"></a>
-
-> Write a message to encourage readers to support your project
 
 If you like this project...
 
