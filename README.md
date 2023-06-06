@@ -28,9 +28,11 @@
 # 📖<a>Vet Clinic</a>
 
 - In this project, I used a relational database to create the initial data structure for a vet clinic. I created a table to store animals' information, insert some data into it, and query it.👌
+## 🛠️ Built With <a name="built-with"></a>
 
+### Tech Stack
 <details>
-  <summary>Client</summary>
+  <summary>Database</summary>
   <ul>
     <li>Sql commands</li>
     <li>Postgresql</li>
@@ -82,7 +84,7 @@ Clone this repository to your desired folder:
 Example commands:
 
 ```sh
-  cd todo-list
+  cd Vet-clinic
   git clone git@github.com:eudondian/Vet-clinic.git
 
 ```
