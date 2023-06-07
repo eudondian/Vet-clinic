@@ -27,6 +27,35 @@ UPDATE animals SET species = 'digimon' WHERE name LIKE '%mon%';
 
 UPDATE animals SET species = 'Pokemon' WHERE name NOT LIKE '%mon%';
 
+BEGIN;
+DELETE FROM animals;
 
+ROLLBACK;
 
+DELETE FROM animals
+WHERE date_of_birth >'2022-01-01';
+SELECT * FROM animals;
+
+SAVEPOINT; vet_savepoint_1;
+
+UPDATE animals SET weight_kg = weight_kg * -1;
+
+ROLLBACK;
+
+UPDATE animals
+SET weight_kg = weight_kg * -1 WHERE weight_kg < 0;
+
+COMMIT;
+
+SELECT COUNT (name) From animals;
+
+SELECT COUNT (escape_attempts) FROM animals WHERE escape_attempts = 0;
+
+SELECT AVG (weight_kg) FROM animals;
+
+SELECT neutered, COUNT(*) AS escape_count FROM animals GROUP BY neutered ORDER BY escape_count DESC LIMIT 1;
+
+SELECT MIN(weight_kg), MAX(weight_kg) FROM animals GROUP BY species;
+
+SELECT AVG(escape_attempts) FROM animals WHERE date_of_birth BETWEEN '1990-01-01' AND '2000-12-31'GROUP BY species;
 
