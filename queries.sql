@@ -61,24 +61,28 @@ SELECT AVG(escape_attempts) FROM animals WHERE date_of_birth BETWEEN '1990-01-01
 
 /* Foreign Key queries*/
 
-SELECT a.name
-FROM animals a
-JOIN owners  ON a.owner_id = owners.id
+SELECT animals.name
+FROM animals 
+JOIN owners  ON animals.owner_id = owners.id
 WHERE owners.full_name = 'Melody Pond';
 
-SELECT a.name
-FROM animals a
-JOIN species  ON a.species_id = species.id
+
+SELECT animals.name
+FROM animals 
+JOIN species  ON animals.species_id = species.id
 WHERE species.name = 'Pokemon';
 
-SELECT owners.full_name, a.name
-FROM owners 
-LEFT JOIN animals a ON owners.id = a.owner_id;
 
-SELECT species.name, COUNT(*) AS animal_count
+SELECT owners.full_name, animals.name
+FROM owners 
+LEFT JOIN animals  ON owners.id = animals.owner_id;
+
+
+SELECT species.name, COUNT(*) AS ani_count
 FROM species 
-JOIN animals a ON species.id = a.species_id
+JOIN animals  ON species.id = animals.species_id
 GROUP BY species.name;
+
 
 SELECT a.name
 FROM animals a
@@ -86,17 +90,18 @@ JOIN owners ON a.owner_id = owners.id
 JOIN species ON a.species_id =species.id
 WHERE owners.full_name = 'Jennifer Onwell' AND species.name = 'Digimon';
 
-SELECT a.name
-FROM animals a
-JOIN owners ON a.owner_id = owners.id
-JOIN species ON a.species_id = species.id
-WHERE owners.full_name = 'Dean Winchester' AND a.escape_attempts =0;
+SELECT animals.name
+FROM animals 
+JOIN owners ON animals.owner_id = owners.id
+JOIN species ON animals.species_id = species.id
+WHERE owners.full_name = 'Dean Winchester' AND animals.escape_attempts =0;
 
-SELECT owners.full_name, COUNT(*) AS animal_count
+
+SELECT owners.full_name, COUNT(*) AS ani_count
 FROM owners
-JOIN animals a ON a.owner_id = owners.id
+JOIN animals  ON animals.owner_id = owners.id
 GROUP BY owners.full_name
-ORDER BY animal_count DESC
+ORDER BY ani_count DESC
 LIMIT 1;
 
 
