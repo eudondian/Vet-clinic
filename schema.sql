@@ -52,4 +52,28 @@ ALTER TABLE animals
 ADD COLUMN owner_id INT REFERENCES owner(id);
 
 
+/* Multiple tables */
+
+CREATE TABLE vets (
+	id SERIAL PRIMARY KEY,
+	name VARCHAR (30),
+	age INT,
+	date_of_graduation DATE
+);
+
+CREATE TABLE specializations (
+    specializations_id SERIAL PRIMARY KEY,
+	vets_id INT REFERENCES vets (id),
+    species_id INT REFERENCES species (id)
+);
+
+CREATE TABLE visits (
+    visits_id SERIAL PRIMARY KEY,
+	animals_id INT REFERENCES animals(id),
+    vets_id INT REFERENCES vets(id),
+	date_of_visit DATE
+);
+
+
+
 
