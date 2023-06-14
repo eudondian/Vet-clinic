@@ -105,4 +105,77 @@ ORDER BY ani_count DESC
 LIMIT 1;
 
 
+/* Many to many Relationship queries*/
+
+SELECT animals.name
+FROM animals 
+JOIN visits  ON animals.id = visits.animals_id
+JOIN vets  ON visits.vets_id = vets.id
+WHERE vets.name = 'William Tatcher'
+ORDER BY visits.date_of_visit DESC
+LIMIT 1;
+
+SELECT COUNT (DISTINCT visits.animals_id) AS ani_count
+FROM visits
+JOIN vets on visits.vets_id = vets.id
+WHERE vets.name = 'Stephanie Mendez'
+
+SELECT vets.name, species.name
+FROM vets
+LEFT JOIN specializations ON vets.id = specializations.vets_id
+LEFT JOIN species ON specializations.species_id = species.id;
+
+SELECT animals.name
+FROM animals
+JOIN visits ON animals.id = visits.animals_id
+JOIN vets ON visits.vets_id = vets.id
+WHERE vets.name = 'Stephanie Mendez'
+	AND visits.date_of_visit >= '2020-04-01'
+	AND visits.date_of_visit <= '2020-08-30';
+
+
+SELECT animals.name, MIN(visits.date_of_visit) AS first_visit
+FROM animals
+JOIN visits ON animals.id = visits.animals_id
+JOIN vets ON visits.vets_id = vets.id
+WHERE vets.name = 'Maisy Smith'
+GROUP BY animals.name
+ORDER BY first_visit ASC
+LIMIT 1;
+
+SELECT animals.name, COUNT(*) AS visit_count
+FROM animals
+JOIN visits on animals.id = visits.animals_id
+GROUP BY animals.name
+ORDER BY visit_count DESC
+LIMIT 1;
+
+SELECT animals.name AS animals_name, visits.date_of_visit, vets.name AS vet_name, vets.age
+FROM animals
+JOIN visits ON animals.id = visits.animals_id
+JOIN vets ON visits.vets_id = vets.id
+WHERE visits.date_of_visit = (
+    SELECT MAX(date_of_visit)
+    FROM visits
+)
+LIMIT 1;
+
+SELECT COUNT(*) AS num_visits
+FROM visits
+JOIN vets ON visits.vets_id = vets.id
+JOIN animals ON visits.animals_id = animals.id
+LEFT JOIN specializations ON visits.vets_id = specializations.vets_id AND animals.id = specializations.species_id
+WHERE specializations.species_id IS NULL;
+
+
+SELECT animals.name, COUNT(*) AS num_visits
+FROM visits
+JOIN animals ON visits.animals_id = animals.id
+JOIN vets ON visits.vets_id = vets.id
+WHERE vets.name = 'Maisy Smith'
+GROUP BY animals.name
+ORDER BY num_visits DESC
+LIMIT 1;
+
+
 
