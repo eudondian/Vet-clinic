@@ -9,4 +9,47 @@ CREATE TABLE animals (
 	weight_kg		DECIMAL(10, 2)
 );
 
-ALTER TABLE animals ADD species VARCHAR(30)
+ALTER TABLE animals ADD species VARCHAR(30);
+
+/* Query multiple tables. */
+
+CREATE TABLE owner(
+   id  SERIAL PRIMARY KEY,
+   full_name VARCHAR (30),
+   AGE INT
+);
+
+CREATE TABLE species(
+	id  SERIAL PRIMARY KEY,
+   name VARCHAR (30)
+);
+
+/* Modify Animal Table (such that id is set as autoincremented PRIMARY KEY )*/
+
+ALTER TABLE animals
+ADD COLUMN new_id SERIAL;
+
+ALTER TABLE animals
+ADD PRIMARY KEY (new_id);
+
+ALTER TABLE animals
+DROP COLUMN id;
+
+ALTER TABLE animals
+RENAME COLUMN new_id TO id;
+
+SELECT * FROM animals;
+
+/* Modify Species Column to include foreign key*/
+
+ALTER TABLE animals
+DROP COLUMN species;
+
+ALTER TABLE animals
+ADD COLUMN species_id INT REFERENCES species(id);
+
+ALTER TABLE animals
+ADD COLUMN owner_id INT REFERENCES owner(id);
+
+
+
